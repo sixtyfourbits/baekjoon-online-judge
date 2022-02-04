@@ -12,18 +12,18 @@ vector<bool> row;
 
 bool check_diag(int x, int y)
 {
-	for (int i = 0; i < min(n - x, y); ++i)
+	for (int i = 1; i < min(n - x, y + 1); ++i)
 	{
 		if (plate[y-i][x+i])
-			return true;
+			return false;
 	}
 
-	for (int i = 0; i < min(x, y); ++i)
+	for (int i = 1; i < min(x + 1, y + 1); ++i)
 	{
 		if (plate[y-i][x-i])
-			return true;
+			return false;
 	}
-	return false;
+	return true;
 }
 
 void back_tracking(int a)
@@ -34,18 +34,18 @@ void back_tracking(int a)
 		return;
 	}
 
-	if (col[a] == 0)
+	for (int j = 0; j < n; ++j)
 	{
-		for (int j = 0; j < n; ++j)
+		if (!col[j])
 		{
-			if (!check_diag(a, j))
+			if (check_diag(j, a))
 			{
-				col[a], row[j] = 1;
+				col[j] = 1;
 
 				plate[a][j] = 1;
 				back_tracking(a + 1);
 
-				col[a], row[j] = 0;
+				col[j] = 0;
 				plate[a][j] = 0;
 			}
 		}
