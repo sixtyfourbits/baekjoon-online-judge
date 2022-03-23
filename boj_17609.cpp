@@ -2,127 +2,81 @@
 #include <string>
 
 using namespace std;
-/*
-string s;
-int ans = 3;
-
-void pal(int r, int l, int acc)
-{
-	if (r >= l)
-	{
-		ans = min(ans, acc);
-		return;
-	}
-
-	if (s[r] != s[l])
-	{
-		if (acc == 1)
-		{
-			ans = min(ans, 2);
-			return;
-		}
-
-		if (s[r] == s[l - 1] && s[r + 1] == s[l])
-		{
-			pal(r+1, l, acc + 1);
-			pal(r, l - 1, acc + 1);
-			return;
-		}
-
-		if (s[r] == s[l - 1])
-		{
-			pal(r, l - 1, acc + 1);
-			return;
-		}
-		else if (s[r + 1] == s[l])
-		{
-			pal(r + 1, l, acc + 1);
-			return;
-		}
-		else
-		{
-			ans = min(ans, 2);
-			return;
-		}
-	}
-
-	pal(r+1, l-1, acc);
-}
-
-int main()
-{
-	int t;
-	cin >> t;
-
-	for (int i = 0; i < t; ++i)
-	{
-		cin >> s;
-		pal(0, s.size() - 1, 0);
-		cout << ans;
-		ans = 3;
-	}
-}
-*/
 
 string s;
 
 int fl(int r, int l)
 {
-	for (int i = r; i < s.size() / 2; ++i)
-	{
-		if (s[r] != s[l])
-			return 0;
-	}
+	while (r >= l)
+    {
+        if (s[r] != s[l])
+            return 2;
+        cout << "asd";
+        ++r; --l;
+    }
 
-	return 1;
+    return 1;
 }
-
 int main()
 {
-	int t;
-	cin >> t;
+    int n;
 
-	for (int i = 0; i < t; ++i)
-	{
-		cin >> s;
+    cin >> n;
 
-		int r, l;
-		for (int j = 0; j < s.size() / 2; ++j)
-		{
-			r = j;
-			l = s.size() - j - 1;
+    for (int t = 0; t < n; ++t)
+    {
 
-			if (s[r] != s[l])
-			{
-				if (fl(r + 1, l))
-				{
-					cout << 1;
-					break;
-				}
+        cin >> s;
 
-				if (fl(r, l -1))
-				{
-					cout << 1;
-					break;
-				}
-				else
-				{
-					cout << 2;
-					break;
-				}
+        int ans;
+        int acc = 0;
 
-				if(!fl(r + 1, l))
-				{
-					cout << 2;
-					break;
-				}
-			}
+        int r = 0;
+        int l = s.size() - 1;
 
-			if (j == s.size() / 2 - 1)
-			{
-				cout << 0;
-				break;
-			}
-		}
-	}
+        for (int i = 1; i <= s.size() / 2; ++i)
+        {
+            if (s[r] != s[l])
+            {
+                ++acc;
+
+                if (acc == 2)
+                {
+                    ans = 2;
+                    break;
+                }
+
+                if (s[r] == s[l - 1] && s[r + 1] == s[l])
+                {
+                    ans = min(fl(r, l - 1), fl(r + 1, l));
+                    break;
+                }
+                else if (s[r] == s[l - 1])
+                {
+                    --l;
+                    --i;
+                    continue;
+                }
+                else if (s[r + 1] == s[l])
+                {
+                    ++r;
+                    --i;
+                    continue;
+                }
+                else
+                {
+                    ans = 2;
+                    break;
+                }
+            }
+
+            if (i == s.size() / 2)
+                ans = acc;
+
+            ++r; --l;
+        }
+
+        cout << ans;
+
+    }
 }
