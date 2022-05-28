@@ -1,10 +1,10 @@
 #include <iostream>
-#include <string>
-#include <vector>
 
 using namespace std;
 
 int main ()
 {
-	cout << "a";
+	int n, m;
+	cin >> n >> m;
+	cout << n - 1 + n * (m - 1);
 }
