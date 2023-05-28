@@ -1,20 +1,11 @@
 {
     "files.associations": {
-        "vector": "cpp",
-        "ostream": "cpp",
         "iostream": "cpp",
-        "__hash_table": "cpp",
+        "vector": "cpp",
+        "initializer_list": "cpp",
+        "ostream": "cpp",
         "string": "cpp",
-        "unordered_map": "cpp",
-        "queue": "cpp",
-        "__split_buffer": "cpp",
-        "array": "cpp",
-        "deque": "cpp",
-        "string_view": "cpp",
         "iosfwd": "cpp",
-        "algorithm": "cpp",
-        "chrono": "cpp",
-        "__tree": "cpp",
-        "map": "cpp"
+        "stack": "cpp"
     }
 }

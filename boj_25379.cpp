@@ -99,6 +99,6 @@ int main()
             --a2;
         }
     }
-
+    //cout << cnt1 << " " << cnt2 << endl;
     cout << min(cnt1, cnt2);
 }
