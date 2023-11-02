@@ -67,7 +67,6 @@ int main()
     for (int i = 0; i < cnt.size(); ++i)
     {
         sum += ceil(cnt[i], k);
-        //cout << ceil(cnt[i], k) << endl;
     }
 
 
